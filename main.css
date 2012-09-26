@@ -1,0 +1,63 @@
+#nav{
+	float:left;
+	width: 200px;
+	height: 400px;
+	//border: 2px orange solid;
+	position:relative;
+	bottom:30px;
+}
+#header{
+	padding:20px;
+	height:100px;
+}
+#logout{
+	margin-left: 90%;
+	margin-top: 1%;
+}
+#logout a{
+	text-decoration: none;
+}
+#about{
+	position: absolute;
+	top: 200px;
+	left: 25px;
+	text-align: left;
+	float:left;
+}
+#form{
+	position: relative;
+	right: 40px;
+}
+#twitter{
+
+}
+#tags{
+	position: relative;
+	left:50px;
+}
+#register{
+	text-decoration:none
+}
+.navbar{
+	position: relative;
+	bottom:30px;
+}
+#form{
+	padding: 1.5%;
+	padding-top: 8%;
+	padding-bottom: 8%;
+	float:right;
+	position: absolute;
+	right: 6%;
+	border-left: #4A3A3A 2px solid;
+	top: 30%;
+	width: 20%;
+}
+#content{
+	float: left;
+	position: static;
+	width: 65%;
+	margin-left: 2%;
+	margin-right: 2%;
+	clear: left;
+}
