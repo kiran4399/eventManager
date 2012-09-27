@@ -39,11 +39,12 @@
         </div>
         </div>
     </div>
+    
     <div id="nav">
-            <ul class="nav nav-list" id="list">
-              <li class="active"><a href="manage.php">Manage Bookings</a></li>
-              <!--<li><a href="#">See tags</a></li>-->
-              <!--<script type="text/javascript">makeList();</script>-->
+            <ul class="nav nav-pills nav-stacked" id="list">
+              <li class="active"><a href="manage.php">Add new booking</a></li>
+              <li><a href="#">Cancel Bookings</a></li>
+              <li><a href="#">My Bookings</a></li>
             </ul>
     </div>
 

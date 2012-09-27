@@ -7,12 +7,7 @@
 
 	$query=mysql_query("SELECT * FROM users WHERE username='$username'");
 
-	echo "<a href='newBook.php'>
-    <div style='background: #353538; border-top-right-radius:5px; border-bottom-right-radius:5px; width: 15%; padding:1px;'>
-    <center><h4>Add new booking</h4></a>
-    </center></div>";
-	echo "<a href='remove.php'>
-    <div style='background: #353538; border-top-right-radius:5px; border-bottom-right-radius:5px; width: 15%; padding:1px; position:relative; top:2px;'><center><h4>Cancel Bookings</h4></a></center></div>";
+	echo "<h3>Form for adding new bookings</h3>";
 	//echo "<center>";
 	/*while(mysql_fetch_assoc($query))
     {
