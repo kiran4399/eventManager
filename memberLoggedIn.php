@@ -13,6 +13,11 @@
     <title>BookMyEvent</title>
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="main.css">
+    <style type="text/css">
+      #tableHeading{
+        padding: 100px;
+      }
+    </style>
 </head>
 <body>
     
@@ -34,19 +39,46 @@
         </div>
         </div>
     </div>
-    
-
-      
-
-    
-
-          <div id="nav">
+    <div id="nav">
             <ul class="nav nav-list" id="list">
               <li class="active"><a href="manage.php">Manage Bookings</a></li>
-              <li><a href="#">See tags</a></li>
+              <!--<li><a href="#">See tags</a></li>-->
               <!--<script type="text/javascript">makeList();</script>-->
             </ul>
-          </div>
+    </div>
+
+    <div id="table">
+      <center>
+      <table border="1" width="50%" cellpadding="50px">
+      <COLGROUP span="3">
+      <tr id="tableHeading">
+        <th>Event</th>
+        <th>Room No.</th>
+        <th>Date</th>
+        <th>Time</th>
+      </tr>
+      </COLGROUP>
+      <tr width="30%">
+        <td>CS210 Class</td>
+        <td>CS101</td>
+        <td>date</td>
+        <td>time</td>
+      </tr>
+      <tr>
+        <td>CS251</td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>CS310</td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </table>
+  </center>
+</div>
 
 <!--<center><div id="twitter"><?php include "twitter.php"; ?></div></center>
 

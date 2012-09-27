@@ -61,3 +61,7 @@
 	margin-right: 2%;
 	clear: left;
 }
+#table{
+	position: relative;
+	right: 50px;
+}
