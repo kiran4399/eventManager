@@ -1,7 +1,7 @@
 <?php
 
 include('includes/head.php');
-echo "<center><h1> Register </h1></center><br>";
+
 
 if (isset($_POST['submit']))
 {
@@ -9,8 +9,9 @@ if (isset($_POST['submit']))
 	$fullName=strip_tags($_POST['fullName']);
 	$password=strip_tags($_POST['password']);
 	$repeatPassword=strip_tags($_POST['repeatPassword']);
+	$email=strip_tags($_POST['email']);
 	
-	if($fullName&&$username&&$password&&$repeatPassword){
+	if($fullName&&$username&&$password&&$repeatPassword&&$email){
 		
 
 		if ($password==$repeatPassword) {
@@ -25,11 +26,11 @@ if (isset($_POST['submit']))
 					$password=md5($password);
 					$repeatPassword=md5($repeatPassword);
 					
-					$connect=mysql_connect("localhost","root","root");
+					$connect=mysql_connect("localhost","root","");
 					mysql_select_db("cs251");
 
 					$queryRegister=mysql_query("
-					INSERT INTO users VALUES ('','$username','$password','$fullName','1')
+					INSERT INTO users VALUES ('','$username','$password','$fullName','$email')
 					");
 
 					die("<center>You have been registered! <a href='index.php'>Return to login page</a></center>");
@@ -38,6 +39,7 @@ if (isset($_POST['submit']))
 			
 		}
 		else{
+			//echo "<center><h1> Register </h1></center><br>";
 			echo "Your passwords don't match!";
 
 		}
@@ -48,15 +50,16 @@ if (isset($_POST['submit']))
 
 	}
 	else{
+		//echo "<center><h1> Register </h1></center><br>";
 		echo "Please fill in <b>all</b> values!";
 	}
 }
 
 ?>
 
+<center><h1> Register </h1></center><br>
 
-
-<center><form action="register.php" method='POST'>
+<center><form action="register.php" method='POST' id="form1">
 	<table>
 		<tr>
 			<td>Choose a username:  </td>
@@ -74,10 +77,16 @@ if (isset($_POST['submit']))
 			<td>Repeat password:  </td>
 			<td><input type ='password' name='repeatPassword'></td>
 		</tr>
+		<tr>
+			<td>Email id:  </td>
+			<td><input type ='text' name='email'></td>
+		</tr>
 	</table>
 	<p>
-		<input type='submit' value='Register' name='submit'>
+		<button type="submit" class="btn" name="submit">Register</button>
+		<!--<input type='submit' value='Register' name='submit'>-->
 	</p>
+</form>
 		<!--<div class="btn-group">
             <button class="btn" type="submit" name="submit"> Register </button>
         </div>-->

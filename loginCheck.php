@@ -7,7 +7,7 @@ $password=$_POST['password'];
 
 if ($username&&$password) {
     
-    $connect=mysql_connect("localhost","root","root") or die("Couldn't connect!");
+    $connect=mysql_connect("localhost","root","") or die("Couldn't connect!");
     
     mysql_select_db("cs251") or die("Couldn't find db!");
 
@@ -31,6 +31,9 @@ if ($username&&$password) {
             include "success.php";
             
             $_SESSION['username']=$dbusername;
+            $_SESSION['password']=$dbpassword;
+            setcookie("username",$_SESSION['username'],time()+2*60*60,"/");
+            //setcookie("password", $_SESSION['password'], time()+60*60*5, "/");
         }
         else{
             echo "<center><div class='alert' style='width:250'><!--<button type='button' class='close' data-dismiss='alert'>x</button>-->

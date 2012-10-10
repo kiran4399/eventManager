@@ -3,7 +3,7 @@ header("Location: /webdev/manage.php");
 session_start();
 
 $username=$_SESSION['username'];
-$connect=mysql_connect("localhost","root","root");
+$connect=mysql_connect("localhost","root","");
 mysql_select_db("cs251");
 $query=mysql_query("SELECT * FROM users WHERE username='$username'");
 while($row=mysql_fetch_assoc($query))

@@ -2,9 +2,8 @@
 	float:left;
 	width: 200px;
 	height: 400px;
-	//border: 2px orange solid;
 	position:relative;
-	bottom:30px;
+	bottom:35px;
 }
 #header{
 	padding:20px;
@@ -24,19 +23,40 @@
 	text-align: left;
 	float:left;
 }
+#bookForm{
+	position: relative;
+	right: 15%;
+	width: 60%;
+	float: right;
+}
 #form{
 	position: relative;
-	right: 40px;
+	right: 60px;
 }
-#twitter{
+#loginText{
+	color: #3a87ad;
+}
+#assignText{
+	color: #468847;
+}
+#registerButton{
+	background: #468847;
+	color: #ffffff;
+	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+}
+#continueButton{
+	background: #3a87ad;
+	color: #ffffff;
+	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+}
 
-}
 #tags{
 	position: relative;
 	left:50px;
 }
 #register{
-	text-decoration:none
+	text-decoration:none;
+	
 }
 .navbar{
 	position: relative;
@@ -62,6 +82,51 @@
 	clear: left;
 }
 #table{
+	float:left;
 	position: relative;
+	left: 10%;
+	right: 1%;
+	width: 75%;
+}
+#eventColumn{
+	width: 40%;
+}
+#arrow{
+	//content: hide;
+	float:right;
+	position: relative;
+	bottom: 97px;
 	right: 50px;
+}
+#table{
+	position: relative;
+	bottom: 10px;
+}
+#table th{
+	padding-top: 8px;
+	padding-bottom: 8px;
+	//margin-left: 4px;
+	//padding-right: 4px;
+}
+#table td{
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+input[type='text']{
+	height: 30px;
+}
+input[type='password']{
+	height: 30px;
+}
+#nav{
+	float: left;
+}
+#placeholder{
+	color: #999999;
+}
+#logoutAlert{
+	position: absolute;
+	float:right;
+	//right:28%;
+	left: 32%;
 }
