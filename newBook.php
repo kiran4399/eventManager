@@ -3,9 +3,9 @@ header("Location: /webdev/manage.php");
 session_start();
 
 $username=$_SESSION['username'];
-$connect=mysql_connect("localhost","root","");
-mysql_select_db("cs251");
-$query=mysql_query("SELECT * FROM users WHERE username='$username'");
+$connect=mysql_connect("localhost","root","kiran");
+mysql_select_db("event_manager");
+$query=mysql_query("SELECT * FROM membersinformationTable WHERE uname='$username'");
 while($row=mysql_fetch_assoc($query))
 {
     	$dbtags=$row["tags"];

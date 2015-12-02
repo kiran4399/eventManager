@@ -7,20 +7,20 @@ $password=$_POST['password'];
 
 if ($username&&$password) {
     
-    $connect=mysql_connect("localhost","root","") or die("Couldn't connect!");
+    $connect=mysql_connect("localhost","root","kiran") or die("Couldn't connect!");
     
-    mysql_select_db("cs251") or die("Couldn't find db!");
+    mysql_select_db("event_manager") or die("Couldn't find db!");
 
     
-    $query=mysql_query("SELECT * FROM users WHERE username='$username'");
+    $query=mysql_query("SELECT * FROM membersinformationTable WHERE uname='$username'");
     
 
     $numrows=mysql_num_rows($query);
     if($numrows!=0){
         while($row=mysql_fetch_assoc($query))
         {
-            $dbusername=$row["username"];
-            $dbpassword=$row['password'];
+            $dbusername=$row["uname"];
+            $dbpassword=$row['pass'];
         }
 
         //check to see if they match

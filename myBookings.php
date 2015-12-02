@@ -76,10 +76,10 @@ echo '
 
     
       
-    $connect1=mysql_connect("localhost","root","") or die("Couldn't connect!");
-    mysql_select_db("cs251") or die("Couldn't find db!");
+    $connect1=mysql_connect("localhost","root","kiran") or die("Couldn't connect!");
+    mysql_select_db("event_manager") or die("Couldn't find db!");
     $username=$_SESSION['username'];
-    $result0=mysql_query("SELECT * FROM events where user='$username'");  
+    $result0=mysql_query("SELECT * FROM participantinformationTable where uname='$username'");  
     //for($i=0;$i<=7;$i++)
     //{
       //echo "hello";

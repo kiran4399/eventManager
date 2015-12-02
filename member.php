@@ -87,13 +87,13 @@ echo '
     </COLGROUP>
 ';
       
-  $connect1=mysql_connect("localhost","root","") or die("Couldn't connect!");
-  mysql_select_db("cs251") or die("Couldn't find db!");
+  $connect1=mysql_connect("localhost","root","kiran") or die("Couldn't connect!");
+  mysql_select_db("event_manager") or die("Couldn't find db!");
       
   for($i=0;$i<=7;$i++)
   {
       $date=date('d-m-Y', strtotime('+'.$i.' days'));
-      $result=mysql_query("SELECT * FROM events where date='$date'");
+      $result=mysql_query("SELECT * FROM EventinformationTable where schedule='$date'");
 
       $numrows=mysql_num_rows($result);
       if(1)

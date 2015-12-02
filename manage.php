@@ -28,8 +28,8 @@
         </ul>
         </div>
     ';
-    $connect=mysql_connect("localhost","root","");
-	mysql_select_db("cs251");
+    $connect=mysql_connect("localhost","root","kiran");
+	mysql_select_db("event_manager");
 	$username=$_SESSION['username'];
     
 	if (isset($_POST['submit']))
@@ -104,11 +104,11 @@
                 }
 
                 $date=date("d-m-Y",strtotime($date));
-                $connect=mysql_connect("localhost","root","");
-                mysql_select_db("cs251");
+                $connect=mysql_connect("localhost","root","kiran");
+                mysql_select_db("event_manager");
 
                 $queryCheck=mysql_query("
-                    SELECT * FROM events WHERE date='$date'
+                    SELECT * FROM EventinformationTable WHERE schedule='$date'
                 ");
                 $num=mysql_num_rows($queryCheck);
                 if($queryCheck)
@@ -133,9 +133,8 @@
                     }
                 }
                 
-                $queryBook=mysql_query("
-                INSERT INTO events VALUES ('$username','$event','$date','$time','$room')
-                ");
+                $queryBook=mysql_query("INSERT INTO EventinformationTable(eventname,eventtype,schedule,cost) VALUES ('$event','$room','$date','$time',5000)"); 
+		$querypart = mysql_query("INSERT INTO participantinformationTable(f VALUES ('$username','$event','$date','$time','$room')");
                 die('<center><div class="alert alert-success" style="width:250px;">
                     <strong>Booking successful!</strong>
                     </div></center>');
