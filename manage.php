@@ -108,7 +108,7 @@
                 mysql_select_db("event_manager");
 
                 $queryCheck=mysql_query("
-                    SELECT * FROM EventinformationTable WHERE schedule='$date'
+                    SELECT * FROM EventinformationTable'
                 ");
                 $num=mysql_num_rows($queryCheck);
                 if($queryCheck)
@@ -118,7 +118,7 @@
                         $time0=$row['time'];
                         //$time0=date("h:i:s A",strtotime($time0));
                         $time1=strtotime('+1 hour',strtotime($time0));
-                        if(strtotime($time)>=strtotime($time0) && strtotime($time)<=$time1 && $row['room']==$room)
+                        if(strtotime($time)>=strtotime($time0) && strtotime($time)<=$time1 && $row['eventtype']==$room)
                         {
                             //echo "3";
                             die("
@@ -133,8 +133,8 @@
                     }
                 }
                 
-                $queryBook=mysql_query("INSERT INTO EventinformationTable(eventname,eventtype,schedule,cost) VALUES ('$event','$room','$date','$time',5000)"); 
-		$querypart = mysql_query("INSERT INTO participantinformationTable(f VALUES ('$username','$event','$date','$time','$room')");
+                $queryBook=mysql_query("INSERT INTO EventinformationTable(eventname,eventtype,schedule,cost) VALUES ('$event','$room',20120618,5000)"); 
+		$querypart = mysql_query("INSERT INTO participantinformationTable(uname,eventid,feedback) VALUES ('$username','2','hello it was a nice one')");
                 die('<center><div class="alert alert-success" style="width:250px;">
                     <strong>Booking successful!</strong>
                     </div></center>');
