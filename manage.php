@@ -134,7 +134,7 @@
                 }
                 
                 $queryBook=mysql_query("INSERT INTO EventinformationTable(eventname,eventtype,schedule,cost) VALUES ('$event','$room',20120618,5000)"); 
-		$querypart = mysql_query("INSERT INTO participantinformationTable(uname,eventid,feedback) VALUES ('$username','2','hello it was a nice one')");
+		$querypart = mysql_query("INSERT INTO participantinformationTable(uname,eventid,feedback) VALUES ('$username',1,'hello it was a nice one')");
                 die('<center><div class="alert alert-success" style="width:250px;">
                     <strong>Booking successful!</strong>
                     </div></center>');

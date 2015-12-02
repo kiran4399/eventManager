@@ -79,7 +79,7 @@ echo '
     $connect1=mysql_connect("localhost","root","kiran") or die("Couldn't connect!");
     mysql_select_db("event_manager") or die("Couldn't find db!");
     $username=$_SESSION['username'];
-    $result0=mysql_query("SELECT * FROM participantinformationTable where uname='$username'");  
+    $result0=mysql_query("SELECT EventinformationTable.* FROM participantinformationTable,EventinformationTable where participantinformationTable.eventid = EventinformationTable.eventid and participantinformationTable.uname='$username'");  
     //for($i=0;$i<=7;$i++)
     //{
       //echo "hello";
@@ -119,10 +119,10 @@ echo '
           /*echo $row['name']. " - ". $row['age'];
           echo "<br />";*/
           echo '
-            <tr>
-              <td>'.$row['date'].'</td>
-              <td>'.$row['room'].'</td>
-              <td>'.$row['event'].'</td>
+            <tr>	
+              <td>'.$row['schedule'].'</td>
+              <td>'.$row['eventtype'].'</td>
+              <td>'.$row['eventname'].'</td>
               <td>'.date("h:i A",strtotime($row["time"])).'
               </td>
             </tr>
