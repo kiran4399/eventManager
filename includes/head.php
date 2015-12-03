@@ -16,13 +16,7 @@
         </center>
     </div>
 
-    <div class="navbar navbar-inverse">
-        <div class="navbar-inner">
-        <a class="brand" href="/cs251Assign4/index.php">Home</a>
-        <ul class="nav">
-        <li><a href="http://www.iitk.ac.in">IITK</a></li>
-        <li class=""><a href="http://www.cse.iitk.ac.in">IITK CSE</a></li>
-        </ul>
+   
         
         <?php
         if(!empty($_SESSION['username']) && !empty($_COOKIE['username']))
@@ -34,7 +28,7 @@
         ?>
         <!--<li class="active"><a href="#">Link</a></li>-->
                
-        </div>
+      
     </div>
 
 

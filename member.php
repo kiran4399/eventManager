@@ -6,12 +6,14 @@ if (empty($_SESSION['username'])||empty($_COOKIE['username']))
   include('includes/head.php');
   echo '
       <div id="nav">
-        <ul class="nav nav-pills nav-stacked" id="list">
-          <li class="active"><a href="member.php">Next 7 days</a></li> 
+            <ul class="nav nav-pills nav-stacked" id="list">
           <li><a href="index.php">Go to start page and login</a></li>
-          <li><a href="check_user.php">Create new event</a></li>
-              <li><a href="myBookings.php">My Bookings</a></li>
-	      <li><a href="manage.php">Book an event</a></li>
+          <li><a href="check_user_create.php">Create new event</a></li>
+          <li><a href="check_user_cancel.php">Cancel new event</a></li>
+          <li><a href="myBookings.php">My events</a></li>
+	  <li><a href="book_event.php">Book an event</a></li>
+	  <li><a href="unbook_event.php">UnBook an event</a></li>
+	  <li><a href="admin_access.php">Administration</a></li>
         </ul>
       </div>
     ';  
@@ -43,26 +45,18 @@ echo '
           <p>Event Manager</p>
         </center>
     </div>
-    <div class="navbar navbar-inverse">
-        <div class="navbar-inner">
-        <a class="brand" href="/cs251Assign4/index.php">Home</a>
-        <ul class="nav">
-        <li><a href="http://www.iitk.ac.in">IITK</a></li>
-        <li><a href="http://www.cse.iitk.ac.in">IITK CSE</a></li>
-        </ul>
-        <div id="logout">
-        <a href="logout.php"><span id="logoutButton" class="label label-important">Logout</span></a>
-        </div>
-        </div>
-    </div>
+    
     
     <div id="nav">
-            <ul class="nav nav-pills nav-stacked" id="list">
-              <li class="active"><a href="member.php">Next 7 days</a></li> 
-              <li><a href="check_user.php">Create new event</a></li>
-              <li><a href="myBookings.php">My Bookings</a></li>
-	      <li><a href="manage.php">Book an event</a></li>
-            </ul>
+                <ul class="nav nav-pills nav-stacked" id="list">
+          <li><a href="index.php">Go to start page and login</a></li>
+          <li><a href="check_user_create.php">Create new event</a></li>
+          <li><a href="check_user_cancel.php">Cancel new event</a></li>
+          <li><a href="myBookings.php">My events</a></li>
+	  <li><a href="book_event.php">Book an event</a></li>
+	  <li><a href="unbook_event.php">UnBook an event</a></li>
+	  <li><a href="admin_access.php">Administration</a></li>
+        </ul>
             <div id="nav">
     </div>
     </div>

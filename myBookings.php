@@ -4,12 +4,15 @@
     include('includes/head.php');      
   die('
     <div id="nav">
-            <ul class="nav nav-pills nav-stacked" id="list">
-              <li><a href="member.php">Next 7 days</a></li> 
-              <li><a href="check_user.php">Book new event</a></li>
-              <!--<li><a href="cancel.php">Cancel Bookings</a></li>-->
-              <li class="active"><a href="myBookings.php">My Bookings</a></li>
-            </ul>
+               <ul class="nav nav-pills nav-stacked" id="list">
+          <li><a href="index.php">Go to start page and login</a></li>
+          <li><a href="check_user_create.php">Create new event</a></li>
+          <li><a href="check_user_cancel.php">Cancel new event</a></li>
+          <li><a href="myBookings.php">My events</a></li>
+	  <li><a href="book_event.php">Book an event</a></li>
+	  <li><a href="unbook_event.php">UnBook an event</a></li>
+	  <li><a href="admin_access.php">Administration</a></li>
+        </ul>
             
     </div>
     <center><div class="alert" style="width:450px;">
@@ -44,26 +47,17 @@ echo '
           <p>Event Manager</p>
         </center>
     </div>
-    <div class="navbar navbar-inverse">
-        <div class="navbar-inner">
-        <a class="brand" href="/cs251Assign4/index.php">Home</a>
-        <ul class="nav">
-        <li><a href="http://www.iitk.ac.in">IITK</a></li>
-        <li><a href="http://www.cse.iitk.ac.in">IITK CSE</a></li>
-        </ul>
-        <div id="logout">
-        <a href="logout.php"><span id="logoutButton" class="label label-important">Logout</span></a>
-        </div>
-        </div>
-    </div>
+   
     
     <div id="nav">
-            <ul class="nav nav-pills nav-stacked" id="list">
-              <li><a href="member.php">Next 7 days</a></li> 
-              <li><a href="check_user.php">Book new event</a></li>
-              <!--<li><a href="cancel.php">Cancel Bookings</a></li>-->
-              <li class="active"><a href="myBookings.php">My Bookings</a></li>
-            </ul>
+                <ul class="nav nav-pills nav-stacked" id="list">
+          <li><a href="check_user_create.php">Create new event</a></li>
+          <li><a href="check_user_cancel.php">Cancel new event</a></li>
+          <li><a href="myBookings.php">My events</a></li>
+	  <li><a href="book_event.php">Book an event</a></li>
+	  <li><a href="unbook_event.php">UnBook an event</a></li>
+	  <li><a href="admin_access.php">Administration</a></li>
+        </ul>
             
     </div>
     ';
@@ -107,7 +101,8 @@ echo '
             <COLGROUP span="3">
             <tr id="tableHeading">
             <th>Date</th>
-            <th>Room No.</th>
+  <th>Type</th>
+            <th>Venue.</th>
             <th id="eventColumn">Event</th>
             <th>Time</th>
             </tr>
@@ -121,7 +116,8 @@ echo '
           echo '
             <tr>	
               <td>'.$row['schedule'].'</td>
-              <td>'.$row['eventtype'].'</td>
+ <td>'.$row['eventtype'].'</td>
+              <td>'.$row['venue'].'</td>
               <td>'.$row['eventname'].'</td>
               <td>'.date("h:i A",strtotime($row["time"])).'
               </td>

@@ -16,9 +16,11 @@ CREATE TABLE `participantinformationTable` (
   `uname` varchar(45) NOT NULL,
   `eventid` int(100) unsigned NOT NULL,
   `feedback` varchar(100) NOT NULL,
+  `id` int not null,
   PRIMARY KEY  (`uid`),
   FOREIGN KEY (`eventid`) REFERENCES EventinformationTable(eventid)
 );
+
 
 CREATE TABLE user_permission (
 

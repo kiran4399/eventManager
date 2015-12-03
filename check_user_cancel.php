@@ -2,11 +2,10 @@
 
 session_start();
 if (empty($_SESSION['username'])||empty($_COOKIE['username'])) 
-{    
-  include('includes/head.php');
+{
 echo "<script>
 alert('Please go to the index page and login');
-window.location.href='members.php';
+window.location.href='index.php';
 </script>";
 }
 
@@ -17,20 +16,23 @@ $connect=mysql_connect("localhost","root","kiran");
                 $queryCheck=mysql_query("
                     SELECT id FROM membersinformationTable where membersinformationTable.uname = '$username'
                 ");
+
+//$row = mysql_fetch_array($queryCheck);
 $val = mysql_result($queryCheck, 0);
-if($val != 1)
-{
+//$val = $row["id"];
+
+
+if($val!=3){
+
 echo "<script>
-alert('You do not have administrative permissions to add or drop tables in databases');
-window.location.href='member.php';
+alert('You do not have permissions to create an event');
+window.location.href='create_event.php';
 </script>";
 }
 
-else{
-
-header("Location: admin_access.html");
+else
+{
+header("Location: cancel_event.php");
 }
 }
 ?>
-
-

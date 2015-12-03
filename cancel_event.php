@@ -8,7 +8,7 @@
     if (empty($_SESSION['username'])||empty($_COOKIE['username'])) {         
         die('
         <div id="nav">
-            <ul class="nav nav-pills nav-stacked" id="list">
+        <ul class="nav nav-pills nav-stacked" id="list">
           <li><a href="index.php">Go to start page and login</a></li>
           <li><a href="check_user_create.php">Create new event</a></li>
           <li><a href="check_user_cancel.php">Cancel new event</a></li>
@@ -25,7 +25,7 @@
     }
 	echo '
         <div id="nav">
-            <ul class="nav nav-pills nav-stacked" id="list">
+        <ul class="nav nav-pills nav-stacked" id="list">
           <li><a href="check_user_create.php">Create new event</a></li>
           <li><a href="check_user_cancel.php">Cancel new event</a></li>
           <li><a href="myBookings.php">My events</a></li>
@@ -132,7 +132,7 @@ $eventtype=strip_tags($_POST['eventtype']);
                             die("
                             <center>
                                 <div class='alert' style='width:450px;'>
-                                    An event already exists from ".date('h:i A',strtotime($time0))." to ".date('h:i A',$time1)."!<a href='manage.php'> Create event again</a>
+                                    An event already exists from ".date('h:i A',strtotime($time0))." to ".date('h:i A',$time1)."!<a href='manage.php'> Cancel again</a>
                                 </div>
                             </center>
                             ");
@@ -143,26 +143,18 @@ $eventtype=strip_tags($_POST['eventtype']);
 $queryCheck=mysql_query("
                     SELECT mid FROM membersinformationTable where membersinformationTable.uname = '$username'
                 ");
-
-
-		
-                $mid = mysql_result($queryCheck, 0);
-
-	$queryinsert=mysql_query("INSERT INTO EventinformationTable(eventname,eventtype,schedule,cost,venue) VALUES ('$eventname','$eventtype',20151204,5000,'$venue')");
-
 $queryCheck2 = mysql_query("
-                    SELECT eventid FROM EventinformationTable where EventinformationTable.venue = '$venue' and EventinformationTable.eventtype = '$eventtype' and EventinformationTable.eventname = '$eventname'
+                    SELECT eventid FROM EventinformationTable where EventinformationTable.venue = '$venue'
                 ");
 
-$eventid = mysql_result($queryCheck2,0);
-                $queryBook=mysql_query("INSERT INTO participantinformationTable(uname,eventid,id) VALUES ('$username',$eventid,$mid)");
 
-
-
-	
+		$eventid = mysql_result($queryCheck2,0);
+                $mid = mysql_result($queryCheck, 0);
+                $queryBook=mysql_query("DELETE FROM participantinformationTable where uname = '$username' and eventid = $eventid");
+		$queryinsert=mysql_query("DELETE FROM EventinformationTable where eventname='$eventname' and eventtype='$eventtype' and venue='$venue'");
 	
                 die('<center><div class="alert alert-success" style="width:250px;">
-                    <strong>Event created successful!</strong>
+                    <strong>Event cancelled successful!</strong>
                     </div></center>');
             }      
         }
@@ -178,7 +170,7 @@ $eventid = mysql_result($queryCheck2,0);
 <div id="bookForm">
 <center>
     <h3>Form for adding new bookings</h3> <br>
-    <form action="create_event.php" method='POST' id="addBooking">
+    <form action="cancel_event.php" method='POST' id="addBooking">
     <table>
         <tr>
             <td>Event Description:  </td>
@@ -215,7 +207,7 @@ $eventid = mysql_result($queryCheck2,0);
         </tr>
         <tr>
             <td colspan="2">
-            <center><button type="submit" class="btn" name="submit">Create</button></center>
+            <center><button type="submit" class="btn" name="submit">Cancel</button></center>
         </td>
             <!--<input type='submit' value='Register' name='submit'>-->
         </tr>

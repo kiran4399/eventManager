@@ -25,7 +25,7 @@ if (isset($_POST['submit']))
 					$connect=mysql_connect("localhost","root","kiran");
 					mysql_select_db("event_manager");
 					$queryRegister=mysql_query("
-					insert into membersinformationTable (first_name,last_name,email,uname,pass,regdate,id) VALUE ('kiran','$fullname','$email','$username','$password',20120618, 2)");
+					insert into membersinformationTable (first_name,last_name,email,uname,pass,regdate,id) VALUE ('kiran','$fullname','$email','$username','$password',20120618, 1)");
 					die("<center>You have been registered! <a href='index.php'>Return to login page</a></center>");
 				}
 			}

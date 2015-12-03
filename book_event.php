@@ -8,7 +8,7 @@
     if (empty($_SESSION['username'])||empty($_COOKIE['username'])) {         
         die('
         <div id="nav">
-            <ul class="nav nav-pills nav-stacked" id="list">
+         <ul class="nav nav-pills nav-stacked" id="list">
           <li><a href="index.php">Go to start page and login</a></li>
           <li><a href="check_user_create.php">Create new event</a></li>
           <li><a href="check_user_cancel.php">Cancel new event</a></li>
@@ -25,7 +25,8 @@
     }
 	echo '
         <div id="nav">
-            <ul class="nav nav-pills nav-stacked" id="list">
+         <ul class="nav nav-pills nav-stacked" id="list">
+          <li><a href="index.php">Go to start page and login</a></li>
           <li><a href="check_user_create.php">Create new event</a></li>
           <li><a href="check_user_cancel.php">Cancel new event</a></li>
           <li><a href="myBookings.php">My events</a></li>
@@ -42,12 +43,12 @@
 	if (isset($_POST['submit']))
     {
     
-        if($_POST['eventname']&&$_POST['eventtype']&&$_POST['dateTime']&&$_POST['venue'])
+        if($_POST['eventname']&&$_POST['dateTime']&&$_POST['venue'])
         {  
             $eventname=strip_tags($_POST['eventname']);
-$eventtype=strip_tags($_POST['eventtype']);
             $dateTime=strip_tags($_POST['dateTime']);
             $venue=strip_tags($_POST['venue']);
+	    		
             if(strlen($event)>100)
             {
                 echo "Max limit for event description is 100";
@@ -112,27 +113,27 @@ $eventtype=strip_tags($_POST['eventtype']);
                 }
 
                 $date=date("d-m-Y",strtotime($date));
-                $connect=mysql_connect("localhost","root","kiran");
+                $connect=mysql_connect("localhost","root","kanv");
                 mysql_select_db("event_manager");
 
                 $queryCheck=mysql_query("
-                    SELECT * FROM EventinformationTable
+                    SELECT * FROM EventinformationTable'
                 ");
                 $num=mysql_num_rows($queryCheck);
                 if($queryCheck)
                 {
                     while($row = mysql_fetch_array($queryCheck))
                     {
-                        $time0=$row['schedule'];
+                        $time0=$row['time'];
                         //$time0=date("h:i:s A",strtotime($time0));
                         $time1=strtotime('+1 hour',strtotime($time0));
-                        if(strtotime($time)>=strtotime($time0) && strtotime($time)<=$time1 && $row['venue']==$venue)
+                        if(strtotime($time)>=strtotime($time0) && strtotime($time)<=$time1 && $row['eventtype']==$venue)
                         {
                             //echo "3";
                             die("
                             <center>
                                 <div class='alert' style='width:450px;'>
-                                    An event already exists from ".date('h:i A',strtotime($time0))." to ".date('h:i A',$time1)."!<a href='manage.php'> Create event again</a>
+                                    An event already exists from ".date('h:i A',strtotime($time0))." to ".date('h:i A',$time1)."!<a href='manage.php'> Book again</a>
                                 </div>
                             </center>
                             ");
@@ -140,29 +141,19 @@ $eventtype=strip_tags($_POST['eventtype']);
                 
                     }
                 }
-$queryCheck=mysql_query("
-                    SELECT mid FROM membersinformationTable where membersinformationTable.uname = '$username'
-                ");
-
-
+                
+                //$queryBook=mysql_query("INSERT INTO EventinformationTable(eventname,eventtype,schedule,cost) VALUES ('$event','$room',20120618,5000)"); 
+	
+		//echo '$event'.'';
+		//$query_ins=mysql_query("INSERT INTO EventinformationTable(eventname,eventtype,schedule,cost) VALUES('$event','$venue',20120618,5000)");
+		$query_id=mysql_query("select eventid from EventinformationTable where eventname='$eventname' and venue = '$venue'");
+		$id=mysql_result($query_id,0);
+		$querypart = mysql_query("INSERT INTO participantinformationTable(uname,eventid,feedback) VALUES ('$username',$id,'hello it was a nice one')");
 		
-                $mid = mysql_result($queryCheck, 0);
-
-	$queryinsert=mysql_query("INSERT INTO EventinformationTable(eventname,eventtype,schedule,cost,venue) VALUES ('$eventname','$eventtype',20151204,5000,'$venue')");
-
-$queryCheck2 = mysql_query("
-                    SELECT eventid FROM EventinformationTable where EventinformationTable.venue = '$venue' and EventinformationTable.eventtype = '$eventtype' and EventinformationTable.eventname = '$eventname'
-                ");
-
-$eventid = mysql_result($queryCheck2,0);
-                $queryBook=mysql_query("INSERT INTO participantinformationTable(uname,eventid,id) VALUES ('$username',$eventid,$mid)");
-
-
-
-	
-	
-                die('<center><div class="alert alert-success" style="width:250px;">
-                    <strong>Event created successful!</strong>
+		//$query_event=mysql_query("select * from EventinformationTable");                
+		$query_participant=mysql_query("select * from participantinformationTable");		
+		die('<center><div class="alert alert-success" style="width:250px;">
+                    <strong>Booking successful!</strong>
                     </div></center>');
             }      
         }
@@ -178,17 +169,13 @@ $eventid = mysql_result($queryCheck2,0);
 <div id="bookForm">
 <center>
     <h3>Form for adding new bookings</h3> <br>
-    <form action="create_event.php" method='POST' id="addBooking">
+    <form action="book_event.php" method='POST' id="addBooking">
     <table>
         <tr>
             <td>Event Description:  </td>
             <td><input type ='text' name='eventname' placeholder="Event Details"></td>
         </tr>
- <tr>
-            <td>Event Type:  </td>
-            <td><input type ='text' name='eventtype' placeholder="Event Type"></td>
-        </tr>
-        <tr>
+
             <td>Pick date and time: </td>
             <td>
                 <input type="text" name="dateTime" id="dateTime" maxlength="25" size="25" placeholder="Date and time of your event">
@@ -197,10 +184,9 @@ $eventid = mysql_result($queryCheck2,0);
                     </a>
             </td>
         </tr>
-
-        <tr>
+      <tr>
             <td>
-                Select venue: 
+                Select Venue: 
             </td>
             <td>
                 <select name="venue">
@@ -215,7 +201,7 @@ $eventid = mysql_result($queryCheck2,0);
         </tr>
         <tr>
             <td colspan="2">
-            <center><button type="submit" class="btn" name="submit">Create</button></center>
+            <center><button type="submit" class="btn" name="submit">Book</button></center>
         </td>
             <!--<input type='submit' value='Register' name='submit'>-->
         </tr>
