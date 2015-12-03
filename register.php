@@ -1,8 +1,5 @@
 <?php
-
 include('includes/head.php');
-
-
 if (isset($_POST['submit']))
 {
 	$username=strip_tags($_POST['username']);
@@ -13,7 +10,6 @@ if (isset($_POST['submit']))
 	
 	if($fullName&&$username&&$password&&$repeatPassword&&$email){
 		
-
 		if ($password==$repeatPassword) {
 			if(strlen($username)>25||strlen($fullName)>100){
 				echo "Max limit for username is 25 characters n that for full name is 100 characters";
@@ -28,7 +24,6 @@ if (isset($_POST['submit']))
 					
 					$connect=mysql_connect("localhost","root","kiran");
 					mysql_select_db("event_manager");
-
 					$queryRegister=mysql_query("
 					insert into membersinformationTable (first_name,last_name,email,uname,pass,regdate,id) VALUE ('kiran','$fullname','$email','$username','$password',20120618, 2)");
 					die("<center>You have been registered! <a href='index.php'>Return to login page</a></center>");
@@ -39,20 +34,14 @@ if (isset($_POST['submit']))
 		else{
 			//echo "<center><h1> Register </h1></center><br>";
 			echo "Your passwords don't match!";
-
 		}
 		
-
-
-
-
 	}
 	else{
 		//echo "<center><h1> Register </h1></center><br>";
 		echo "Please fill in <b>all</b> values!";
 	}
 }
-
 ?>
 
 <center><h1> Register </h1></center><br>

@@ -9,8 +9,9 @@ if (empty($_SESSION['username'])||empty($_COOKIE['username']))
         <ul class="nav nav-pills nav-stacked" id="list">
           <li class="active"><a href="member.php">Next 7 days</a></li> 
           <li><a href="index.php">Go to start page and login</a></li>
-          <li><a href="check_user.php">Book new event</a></li>
-          <li><a href="myBookings.php">My Bookings</a></li>
+          <li><a href="check_user.php">Create new event</a></li>
+              <li><a href="myBookings.php">My Bookings</a></li>
+	      <li><a href="manage.php">Book an event</a></li>
         </ul>
       </div>
     ';  
@@ -58,8 +59,9 @@ echo '
     <div id="nav">
             <ul class="nav nav-pills nav-stacked" id="list">
               <li class="active"><a href="member.php">Next 7 days</a></li> 
-              <li><a href="check_user.php">Book new event</a></li>
+              <li><a href="check_user.php">Create new event</a></li>
               <li><a href="myBookings.php">My Bookings</a></li>
+	      <li><a href="manage.php">Book an event</a></li>
             </ul>
             <div id="nav">
     </div>

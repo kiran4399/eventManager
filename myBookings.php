@@ -6,7 +6,7 @@
     <div id="nav">
             <ul class="nav nav-pills nav-stacked" id="list">
               <li><a href="member.php">Next 7 days</a></li> 
-              <li><a href="manage.php">Book new event</a></li>
+              <li><a href="check_user.php">Book new event</a></li>
               <!--<li><a href="cancel.php">Cancel Bookings</a></li>-->
               <li class="active"><a href="myBookings.php">My Bookings</a></li>
             </ul>
@@ -60,7 +60,7 @@ echo '
     <div id="nav">
             <ul class="nav nav-pills nav-stacked" id="list">
               <li><a href="member.php">Next 7 days</a></li> 
-              <li><a href="manage.php">Book new event</a></li>
+              <li><a href="check_user.php">Book new event</a></li>
               <!--<li><a href="cancel.php">Cancel Bookings</a></li>-->
               <li class="active"><a href="myBookings.php">My Bookings</a></li>
             </ul>
