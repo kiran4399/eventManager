@@ -7,8 +7,13 @@ $connect=mysql_connect("localhost","root","kiran");
                     SELECT id FROM membersinformationTable where membersinformationTable.uname = '$username'
                 ");
 
-$row = mysql_fetch_array($queryCheck);
-$val = 3;
+//$row = mysql_fetch_array($queryCheck);
+$val = mysql_result($queryCheck, 0);
+//$val = $row["id"];
+
+$wfile = fopen("/var/www/html/eventManager/test", "w") or die("Unable to open file!");
+fwrite($wfile, $val);
+fclose($wfile);
 
 if($val!=3){
 
@@ -20,6 +25,6 @@ window.location.href='member.php';
 
 else
 {
-<meta http-equiv="refresh" content="0;URL=manage.php" />
+header("Location: manage.php");
 }
 ?>
