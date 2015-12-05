@@ -14,6 +14,7 @@ if (empty($_SESSION['username'])||empty($_COOKIE['username']))
 	  <li><a href="book_event.php">Book an event</a></li>
 	  <li><a href="unbook_event.php">UnBook an event</a></li>
 	  <li><a href="admin_access.php">Administration</a></li>
+<li><a href="member.php">Next 7 days</a></li>
         </ul>
       </div>
     ';  
@@ -56,6 +57,7 @@ echo '
 	  <li><a href="book_event.php">Book an event</a></li>
 	  <li><a href="unbook_event.php">UnBook an event</a></li>
 	  <li><a href="admin_access.php">Administration</a></li>
+<li><a href="member.php">Next 7 days</a></li>
         </ul>
             <div id="nav">
     </div>
@@ -75,20 +77,20 @@ echo '
   <COLGROUP span="3">
   <tr id="tableHeading">
     <th>Date</th>
-    <th>Room No.</th>
+    <th>venue</th>
     <th id="eventColumn">Event</th>
     <th>Time</th>
     <th>Created by</th>
     </tr>
     </COLGROUP>
 ';
-      
+  $username=$_SESSION['username'];    
   $connect1=mysql_connect("localhost","root","kiran") or die("Couldn't connect!");
   mysql_select_db("event_manager") or die("Couldn't find db!");
-      
+      $username=$_SESSION['username'];  
   for($i=0;$i<=7;$i++)
   {
-      $date=date('d-m-Y', strtotime('+'.$i.' days'));
+      $date=date('Y-m-d 00:00:00', strtotime('+'.$i.' days'));
       $result=mysql_query("SELECT * FROM EventinformationTable where schedule='$date'");
 
       $numrows=mysql_num_rows($result);
@@ -101,41 +103,41 @@ echo '
           <td rowspan="'.($numrows).'"><center>'.$date.'</center></td>
           <td><center>
         ';
-        if($numrows){ echo $row['room']; }
+        if($numrows){ echo $row['venue']; }
           echo '
             </center></td>
             <td><center>
           ';
-        if($numrows){ echo $row['event']; }
+        if($numrows){ echo $row['eventname']; }
           echo '
             </center></td>
             <td><center>
           ';
         if($numrows){
-          echo date("h:i A",strtotime($row["time"])).'</td>';
+          echo date("h:i A",strtotime($row["schedule"])).'</td>';
         }
         else echo '</center></td>';
         echo '<td><center>';
-        if($numrows){ echo $row['user']; }
+        if($numrows){ echo $row['username']; }
         echo '</center></td></tr>';
       
         while($row = mysql_fetch_array($result))
         {
           echo '
             <tr>
-              <td><center>'.$row['room'].'</center></td>
-              <td><center>'.$row['event'].'</center></td>
+              <td><center>'.$row['venue'].'</center></td>
+              <td><center>'.$row['eventname'].'</center></td>
               <td><center>';
-          if($row['time'])
+          if($row['schedule'])
           {
-            echo date("h:i A",strtotime($row["time"])).
+            echo date("h:i A",strtotime($row["schedule"])).
             '
             </center></td>
           ';
             }
             else echo '</center></td>';
           echo '
-              <td><center>'.$row['user'].'</center></td>
+              <td><center>'.$username.'</center></td>
             </tr>
           ';
         }

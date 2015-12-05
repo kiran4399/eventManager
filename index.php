@@ -7,7 +7,7 @@
     <div id="content">
         <h4>An open portal for members of to book events.</h4><br>
         
-        <center><h5 id="assignText">[Created as an assignment for CS251]</h5></center><br>
+        <center><h5 id="assignText">Event manager</h5></center><br>
         <center><h3 id="loginText">On your right is the login/register panel!!</h3><!--<img id="arrow" src="arrow.jpg" width="20%" height="10%">--></center>
     </div>  
 

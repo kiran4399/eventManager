@@ -16,6 +16,7 @@
 	  <li><a href="book_event.php">Book an event</a></li>
 	  <li><a href="unbook_event.php">UnBook an event</a></li>
 	  <li><a href="admin_access.php">Administration</a></li>
+<li><a href="member.php">Next 7 days</a></li>
         </ul>
         </div>
         <center><div class="alert" style="width:500px;">
@@ -32,6 +33,7 @@
 	  <li><a href="book_event.php">Book an event</a></li>
 	  <li><a href="unbook_event.php">UnBook an event</a></li>
 	  <li><a href="admin_access.php">Administration</a></li>
+<li><a href="member.php">Next 7 days</a></li>
         </ul>
         </div>
     ';
@@ -42,12 +44,13 @@
 	if (isset($_POST['submit']))
     {
     
-        if($_POST['eventname']&&$_POST['eventtype']&&$_POST['dateTime']&&$_POST['venue'])
+        if($_POST['eventname']&&$_POST['eventtype']&&$_POST['dateTime']&&$_POST['venue']&&$_POST['cost'])
         {  
             $eventname=strip_tags($_POST['eventname']);
 $eventtype=strip_tags($_POST['eventtype']);
             $dateTime=strip_tags($_POST['dateTime']);
             $venue=strip_tags($_POST['venue']);
+$cost=strip_tags($_POST['cost']);
             if(strlen($event)>100)
             {
                 echo "Max limit for event description is 100";
@@ -111,7 +114,7 @@ $eventtype=strip_tags($_POST['eventtype']);
                         break;
                 }
 
-                $date=date("d-m-Y",strtotime($date));
+                $date=date("'Y-m-d H:i:s'",strtotime($date));
                 $connect=mysql_connect("localhost","root","kiran");
                 mysql_select_db("event_manager");
 
@@ -148,7 +151,7 @@ $queryCheck=mysql_query("
 		
                 $mid = mysql_result($queryCheck, 0);
 
-	$queryinsert=mysql_query("INSERT INTO EventinformationTable(eventname,eventtype,schedule,cost,venue) VALUES ('$eventname','$eventtype',20151204,5000,'$venue')");
+	$queryinsert=mysql_query("INSERT INTO EventinformationTable(eventname,eventtype,schedule,cost,venue) VALUES ('$eventname','$eventtype',$date,$cost,'$venue')");
 
 $queryCheck2 = mysql_query("
                     SELECT eventid FROM EventinformationTable where EventinformationTable.venue = '$venue' and EventinformationTable.eventtype = '$eventtype' and EventinformationTable.eventname = '$eventname'
@@ -212,6 +215,10 @@ $eventid = mysql_result($queryCheck2,0);
 <option value="chenai">chennai</option>
                 </select>
             </td>
+        </tr>
+ <tr>
+            <td>Event Cost:  </td>
+            <td><input type ='text' name='cost' placeholder="Event Cost"></td>
         </tr>
         <tr>
             <td colspan="2">

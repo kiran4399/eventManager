@@ -16,6 +16,7 @@
 	  <li><a href="book_event.php">Book an event</a></li>
 	  <li><a href="unbook_event.php">UnBook an event</a></li>
 	  <li><a href="admin_access.php">Administration</a></li>
+<li><a href="member.php">Next 7 days</a></li>
         </ul>
         </div>
         <center><div class="alert" style="width:500px;">
@@ -32,6 +33,7 @@
 	  <li><a href="book_event.php">Book an event</a></li>
 	  <li><a href="unbook_event.php">UnBook an event</a></li>
 	  <li><a href="admin_access.php">Administration</a></li>
+<li><a href="member.php">Next 7 days</a></li>
         </ul>
         </div>
     ';
